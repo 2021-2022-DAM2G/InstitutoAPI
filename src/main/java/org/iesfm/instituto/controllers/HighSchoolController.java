@@ -1,4 +1,4 @@
-package org.iesfm.instituto;
+package org.iesfm.instituto.controllers;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
