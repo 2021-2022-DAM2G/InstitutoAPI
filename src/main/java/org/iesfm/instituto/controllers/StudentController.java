@@ -17,7 +17,7 @@ public class StudentController {
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/student/{nif}")
-    public void deleteEstudent(@PathVariable("nif") String nif){
+    public void deleteStudent(@PathVariable("nif") String nif){
         System.out.println("Eliminado!");
     }
 
