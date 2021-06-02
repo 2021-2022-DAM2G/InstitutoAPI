@@ -5,6 +5,7 @@ import org.iesfm.instituto.Group;
 import org.iesfm.instituto.Student;
 import org.iesfm.instituto.Title;
 import org.iesfm.instituto.services.HighSchool;
+import org.springframework.context.annotation.Bean;
 
 import java.util.*;
 
