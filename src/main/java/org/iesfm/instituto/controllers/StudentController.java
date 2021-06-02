@@ -1,19 +1,19 @@
 package org.iesfm.instituto.controllers;
 
 import org.iesfm.instituto.Student;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.LinkedList;
 import java.util.List;
 
 @RestController
 public class StudentController {
 
-    @RequestMapping(method = RequestMethod.GET, path = "/student/{}")
+    @RequestMapping(method = RequestMethod.GET, path = "/student")
     public List<Student> getStudents() {
-        return null;
+        List<Student> students = new LinkedList<>();
+        students.add(new Student("11111111A", "Christian", "Bale", 12345, "c/Invent nº 1", "christianbale@gmail.com"));
+        return students;
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/student/{nif}")
@@ -23,11 +23,11 @@ public class StudentController {
 
     @RequestMapping(method = RequestMethod.DELETE, path = "/student/{nif}")
     public void deleteStudent(@PathVariable("nif") String nif) {
-        System.out.println("Eliminado!");
+        System.out.println("El estudiante con nif: " + nif + " se ha añadido con éxito");
     }
 
     @RequestMapping(method = RequestMethod.POST, path = "/student/{nif}")
-    public void addStudent(){
+    public void addStudent(@RequestBody Student student){
 
     }
 
