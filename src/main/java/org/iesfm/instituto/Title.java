@@ -14,20 +14,29 @@ public class Title {
     public static final String MECHANICS = "Mechanics";
     public static final String ADMINISTRATION = "Administration";
 
+    private int id;
     private String name;
     private String level;
     private String area;
     private String description;
 
-    public Title(String name, String level, String area, String description) {
+    public Title(int id, String name, String level, String area, String description) {
+        this.id = id;
         this.name = name;
         this.level = level;
         this.area = area;
         this.description = description;
     }
 
-
     // getters setters hashCode equals toString
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -66,7 +75,8 @@ public class Title {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Title title = (Title) o;
-        return Objects.equals(name, title.name) &&
+        return id == title.id &&
+                Objects.equals(name, title.name) &&
                 Objects.equals(level, title.level) &&
                 Objects.equals(area, title.area) &&
                 Objects.equals(description, title.description);
@@ -74,13 +84,14 @@ public class Title {
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, level, area, description);
+        return Objects.hash(id, name, level, area, description);
     }
 
     @Override
     public String toString() {
         return "Title{" +
-                "name='" + name + '\'' +
+                "id=" + id +
+                ", name='" + name + '\'' +
                 ", level='" + level + '\'' +
                 ", area='" + area + '\'' +
                 ", description='" + description + '\'' +

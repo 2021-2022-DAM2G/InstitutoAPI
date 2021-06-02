@@ -4,12 +4,14 @@ import java.util.Objects;
 
 public class Group {
 
+    private int id;
     private String course;
     private String letter;
     private String title;
     private int year;
 
-    public Group(String course, String letter, String title, int year) {
+    public Group(int id, String course, String letter, String title, int year) {
+        this.id = id;
         this.course = course;
         this.letter = letter;
         this.title = title;
@@ -18,6 +20,14 @@ public class Group {
 
 
     // getters setters hashCode equals toString
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getCourse() {
         return course;
@@ -56,7 +66,8 @@ public class Group {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Group group = (Group) o;
-        return year == group.year &&
+        return id == group.id &&
+                year == group.year &&
                 Objects.equals(course, group.course) &&
                 Objects.equals(letter, group.letter) &&
                 Objects.equals(title, group.title);
@@ -64,13 +75,14 @@ public class Group {
 
     @Override
     public int hashCode() {
-        return Objects.hash(course, letter, title, year);
+        return Objects.hash(id, course, letter, title, year);
     }
 
     @Override
     public String toString() {
         return "Group{" +
-                "course='" + course + '\'' +
+                "id=" + id +
+                ", course='" + course + '\'' +
                 ", letter='" + letter + '\'' +
                 ", title='" + title + '\'' +
                 ", year=" + year +
