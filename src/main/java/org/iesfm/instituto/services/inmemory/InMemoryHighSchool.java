@@ -31,16 +31,16 @@ public class InMemoryHighSchool implements HighSchool {
 
     @Override
     public Student getStudent(String nif) {
-        return null;
+        return students.get(nif);
     }
 
     @Override
     public void deleteStudent(String nif) {
-
+        students.remove(nif);
     }
 
     @Override
     public void addStudent(Student student) {
-
+        students.put(student.getNif(), student);
     }
 }

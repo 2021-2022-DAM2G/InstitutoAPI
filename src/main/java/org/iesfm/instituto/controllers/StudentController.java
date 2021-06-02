@@ -30,7 +30,6 @@ public class StudentController {
 
     @RequestMapping(method = RequestMethod.DELETE, path = "/student/{nif}")
     public void deleteStudent(@PathVariable("nif") String nif) {
-
         highSchool.deleteStudent(nif);
     }
 
