@@ -1,34 +1,38 @@
 package org.iesfm.instituto.controllers;
 
 import org.iesfm.instituto.Student;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.iesfm.instituto.services.HighSchool;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 public class StudentController {
 
-    @RequestMapping(method = RequestMethod.GET, path = "/student/{}")
+    private HighSchool highSchool;
+
+    public StudentController(HighSchool highSchool) {
+        this.highSchool = highSchool;
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/student")
     public List<Student> getStudents() {
-        return null;
+        return highSchool.getStudents();
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/student/{nif}")
     public Student getStudent(@PathVariable("nif") String nif) {
-        return new Student(nif, "Christian", "Bale", 12345, "c/Invent nº 1", "christianbale@gmail.com");
+        return highSchool.getStudent(nif);
     }
 
     @RequestMapping(method = RequestMethod.DELETE, path = "/student/{nif}")
     public void deleteStudent(@PathVariable("nif") String nif) {
-        System.out.println("Eliminado!");
+        highSchool.deleteStudent(nif);
     }
 
-    @RequestMapping(method = RequestMethod.POST, path = "/student/{nif}")
-    public void addStudent(){
-
+    @RequestMapping(method = RequestMethod.POST, path = "/student")
+    public void addStudent(@RequestBody Student student) {
+        highSchool.addStudent(student);
     }
 
 }
