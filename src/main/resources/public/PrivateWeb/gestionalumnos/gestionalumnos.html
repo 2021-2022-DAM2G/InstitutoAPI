@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Gestion de Titulos</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="../css/css_web.css">
+
+	<script type="text/javascript" src="gestionalumnos.js"></script>
+
+</head>
+<body onload="alert('se ha cargado')">
+	<header id="logoTop">
+		<div id="imag1"><img  id="banner" src="../imagenes/logoTop.JPG"></div>
+		<div id="imag1"><a href="../perfil/perfil.html"><img id="user" src="../imagenes/icono.png"></a></div>
+	</header>
+
+	<nav id="navegador">
+		<ul>
+			<li><a href="../gestiontitulos/gestiontitulos.html">Gestion de Titulos</a></li>
+			<li><a href="../gestiongrupos/gestiongrupos.html"> Gestion de Grupos</a></li>
+			<li><a href="../gestionalumnos/gestionalumnos.html">Gestion de Alumnos</a></li>
+			<li><a href="../gestionmatriculas/gestionmatriculas.html">Gestion de Matrículas</a></li>
+		</ul><table id="nav">
+			
+		</table>
+	</nav>
+	<section id="formulario">
+		<form>
+			<label for="nif">NIF:</label><br>
+			<input type="text" id="nif" name="nif" ><br>
+
+			<label for="name">Nombre:</label><br>
+			<input type="text" id="name" name="name" ><br>
+
+			<label for="surname">Apellidos:</label><br>
+			<input type="text" id="surname" name="surname" ><br>
+
+			<label for="zipCode">Codigo Postal:</label><br>
+			<input type="text" id="zipCode" name="zipCode" ><br>
+
+			<label for="address">Direccion:</label><br>
+			<input type="text" id="address" name="address"><br>
+
+			<label for="email">Correo Electronico:</label><br>
+			<input type="text" id="email" name="email"><br><br>
+
+			<button type="button" onclick="makeStudents()" > Añadir datos</button> 
+		</form> 
+
+	</section>
+
+	<section>
+		<table id="infoTabla">
+			<tr>
+				<th>NIF</th>
+				<th>Nombre</th>
+				<th>Apelldios</th>
+				<th>Codigo Postal</th>	
+				<th>Direccion</th>
+				<th>Correo Electronico</th>
+			</tr>
+			
+		</table>
+	</section>
+
+</body>
+</html>
