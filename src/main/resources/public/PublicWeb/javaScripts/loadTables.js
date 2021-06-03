@@ -71,7 +71,7 @@ function addTitleFormed(title) {
 }
 
 function newTitleFormed() {
-    $.get("/title", function(title, status) {
+    $.get("/title", function(titles, status) {
         for (title of titles) {
             addTitleFormed(title);
         }
