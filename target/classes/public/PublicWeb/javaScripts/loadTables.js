@@ -38,7 +38,7 @@ function addStudent(student) {
 
 function newTitle() {
     var titleJson = { idTitulo: 1, name: 'Título', level: 'Superior', family: 'Informática', description: 'Descripción' };
-    addTitle(titleJson);
+    addTitleFormed(titleJson);
 }
 
 function addTitleFormed(title) {
@@ -121,7 +121,7 @@ function addStudentFormed(studentFormedJson) {
 
 function newGroup() {
     var group = { id: 1, course: "Dam1", letter: "A", title: "Nombre Titulo", year: 2021 }
-    addGroup(group);
+    addGroupFormed(group);
 }
 
 function addGroupFormed(newGroup) {
