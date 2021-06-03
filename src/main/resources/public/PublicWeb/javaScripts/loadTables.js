@@ -46,7 +46,7 @@ function addTitle(title) {
 
     var titleTr = document.createElement("tr");
 
-    var idTitleTD = document.appendChild("td");
+    var idTitleTD = document.createElement("td");
     idTitleTD.appendChild(document.createTextNode(title.idTitulo));
 
     var nameTitleTd = document.createElement("td");
