@@ -1,0 +1,102 @@
+body {
+    max-width: 10000px;
+    margin-left: 5%;
+    margin-right: 5%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.banner {
+    image-rendering: optimizeQuality;
+    width: 810px;
+    height: 210px;
+    margin-left: 25%;
+}
+
+.navbar {
+    justify-content: center;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    overflow: hidden;
+    background-color: #007f3f;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+
+/* Change the link color to #111 (black) on hover */
+
+li a:hover {
+    background-color: darkorange;
+}
+
+.valores {
+    background-color: white;
+}
+
+p {
+    text-align: justify;
+}
+
+#logoErasmus {
+    float: left;
+    margin-right: 1%;
+}
+
+.erasmus {
+    margin-top: 2%;
+}
+
+#logoCoach {
+    float: left;
+    margin-right: 1%;
+}
+
+.coaching {
+    margin-top: 7%;
+}
+
+#logoActividades {
+    float: left;
+    margin-right: 1%;
+}
+
+.extraescolares {
+    margin-top: 3%;
+}
+
+#logoEmprende {
+    float: left;
+    margin-right: 1%;
+}
+
+.emprende {
+    margin-top: 1%;
+}
+
+#separacionSectionFooter {
+    background-color: #007f3f;
+    margin-top: 5%;
+    height: 8px;
+}
+
+footer {
+    margin-top: 2%;
+}
+
+footer p {
+    font-family: 'Times New Roman', Times, serif;
+}
