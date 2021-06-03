@@ -38,7 +38,48 @@ function addStudent(student) {
 
 function newTitle() {
     var titleJson = { idTitulo: 1, name: 'Título', level: 'Superior', family: 'Informática', description: 'Descripción' };
+<<<<<<< HEAD
     addTitleFormed(titleJson);
+=======
+<<<<<<< HEAD
+    addTitleFormed(titleJson);
+=======
+    addTitle(titleJson);
+<<<<<<< HEAD
+}
+
+function addTitle(title) {
+    var titlesTable = document.getElementById("table");
+
+    var titleTr = document.createElement("tr");
+
+    var idTitleTD = document.createElement("td");
+    idTitleTD.appendChild(document.createTextNode(title.idTitulo));
+
+    var nameTitleTd = document.createElement("td");
+    nameTitleTd.appendChild(document.createTextNode(title.name));
+
+    var levelTd = document.createElement("td");
+    levelTd.appendChild(document.createTextNode(title.level));
+
+    var familyTd = document.createElement("td");
+    familyTd.appendChild(document.createTextNode(title.family));
+
+    var descriptionTd = document.createElement("td");
+    descriptionTd.appendChild(document.createTextNode(title.description));
+
+    titleTr.appendChild(idTitleTD);
+    titleTr.appendChild(nameTitleTd);
+    titleTr.appendChild(levelTd);
+    titleTr.appendChild(familyTd);
+    titleTr.appendChild(descriptionTd);
+
+    titlesTable.appendChild(titleTr);
+}
+
+=======
+>>>>>>> a7698bd5dd8f0aee679a2875337ddce72d546dc3
+>>>>>>> 938dbc465ba07523151cc3689ed95ce9baa1462a
 }
 
 function addTitleFormed(title) {
