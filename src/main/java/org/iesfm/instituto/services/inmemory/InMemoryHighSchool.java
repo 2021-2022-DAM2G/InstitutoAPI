@@ -18,9 +18,11 @@ public class InMemoryHighSchool implements HighSchool {
 
     public InMemoryHighSchool() {
         groups = new HashMap<>();
+        groups.put(1, new Group(1, "1ºDAM", "C", "DAM", 2020));
         students = new HashMap<>();
         students.put("234343434F", new Student("234343434F", "Mikel", "San Vicente", 34234, "Calle falsa", "mikelsa@gmsdf.domc"));
         titles = new HashMap<>();
+        titles.put(1, new Title(1, "DAM", "Superior", "Informatica y telecomunicaciones", "descripcion"));
         enrollments = new LinkedList<>();
     }
 
@@ -66,5 +68,27 @@ public class InMemoryHighSchool implements HighSchool {
     @Override
     public void addGroup(Group group) {
         groups.put(group.getId(), group);
+    }
+
+    @Override
+    public List<Title> getTitles() {
+        List<Title> titles = new LinkedList<>();
+        titles.addAll(this.titles.values());
+        return titles;
+    }
+
+    @Override
+    public Title getTitle(int id) {
+        return titles.get(id);
+    }
+
+    @Override
+    public void deleteTitle(int id) {
+        titles.remove(id);
+    }
+
+    @Override
+    public void addTitle(Title title) {
+        titles.put(title.getId(), title);
     }
 }
