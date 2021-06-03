@@ -70,6 +70,14 @@ function addTitle(title) {
     titlesTable.appendChild(titleTr);
 }
 
+function newTitleFormed() {
+    $.get("/title", function(title, status) {
+        for (title of titles) {
+            addTitleFormed(title);
+        }
+    });
+}
+
 function newStudentFormed() {
     $.get("/student", function(students, status) {
         for (student of students) {
