@@ -38,10 +38,10 @@ function addStudent(student) {
 
 function newTitle() {
     var titleJson = { idTitulo: 1, name: 'Título', level: 'Superior', family: 'Informática', description: 'Descripción' };
-    addTitle(titleJson);
+    addTitleFormed(titleJson);
 }
 
-function addTitle(title) {
+function addTitleFormed(title) {
     var titlesTable = document.getElementById("table");
 
     var titleTr = document.createElement("tr");
@@ -121,10 +121,10 @@ function addStudentFormed(studentFormedJson) {
 
 function newGroup() {
     var group = { id: 1, course: "Dam1", letter: "A", title: "Nombre Titulo", year: 2021 }
-    addGroup(group);
+    addGroupFormed(group);
 }
 
-function addGroup(newGroup) {
+function addGroupFormed(newGroup) {
     var table = document.getElementById("table");
 
     var tr = document.createElement("tr");
@@ -157,7 +157,7 @@ function addGroup(newGroup) {
 function newGroupFormed() {
     $.get("/group", function(groups, status) {
         for (group of groups) {
-            addGroup(group);
+            addGroupFormed(group);
         }
     });
 }
