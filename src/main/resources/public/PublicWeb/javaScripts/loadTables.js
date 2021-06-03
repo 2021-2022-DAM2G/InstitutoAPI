@@ -41,7 +41,7 @@ function newTitle() {
     addTitle(titleJson);
 }
 
-function addTitle(title) {
+function addTitleFormed(title) {
     var titlesTable = document.getElementById("table");
 
     var titleTr = document.createElement("tr");
@@ -124,7 +124,7 @@ function newGroup() {
     addGroup(group);
 }
 
-function addGroup(newGroup) {
+function addGroupFormed(newGroup) {
     var table = document.getElementById("table");
 
     var tr = document.createElement("tr");
@@ -157,7 +157,7 @@ function addGroup(newGroup) {
 function newGroupFormed() {
     $.get("/group", function(groups, status) {
         for (group of groups) {
-            addGroup(group);
+            addGroupFormed(group);
         }
     });
 }
