@@ -67,40 +67,42 @@ function addTitle(title) {
 }
 
 function newStudentFormed() {
-	
-    var studentFormedJson = {nif: '842848l', name: 'Ana' , surname: 'Lopez', zipCode: '28060', address: 'calle falsa', email: 'correofalso@gmail.com'};
-    addStudentFormed(studentFormedJson);
+	$.get("/student", function(students, status){
+		for(student of students) {
+			addStudentFormed(student);		
+		}
+	});
 }
 
 function addStudentFormed(studentFormedJson) {
-    var table = document.getElementById("table");
+	var table = document.getElementById("table");
 
-    var tr = document.createElement("tr");
-    
-    var nifTd=document.createElement("td");
-    nifTd.appendChild(document.createTextNode(studentFormedJson.nif));
-    
-    var nameTd=document.createElement("td");
-    nameTd.appendChild(document.createTextNode(studentFormedJson.name));
-    
-    var surnameTd=document.createElement("td");
-    surnameTd.appendChild(document.createTextNode(studentFormedJson.surname));
-    
-    var zipCodeTd=document.createElement("td");
-    zipCodeTd.appendChild(document.createTextNode(studentFormedJson.zipCode));
-    
-    var addressTd=document.createElement("td");
-    addressTd.appendChild(document.createTextNode(studentFormedJson.address));
-    
-    var emailTd=document.createElement("td");
-    emailTd.appendChild(document.createTextNode(studentFormedJson.email));
+	var tr = document.createElement("tr");
 
-    tr.appendChild(nifTd);
-    tr.appendChild(nameTd);
-    tr.appendChild(surnameTd);
-    tr.appendChild(zipCodeTd);
-    tr.appendChild(addressTd);
-    tr.appendChild(emailTd);
-    
-    table.appendChild(tr);
+	var nifTd=document.createElement("td");
+	nifTd.appendChild(document.createTextNode(studentFormedJson.nif));
+
+	var nameTd=document.createElement("td");
+	nameTd.appendChild(document.createTextNode(studentFormedJson.name));
+
+	var surnameTd=document.createElement("td");
+	surnameTd.appendChild(document.createTextNode(studentFormedJson.surname));
+
+	var zipCodeTd=document.createElement("td");
+	zipCodeTd.appendChild(document.createTextNode(studentFormedJson.zipCode));
+
+	var addressTd=document.createElement("td");
+	addressTd.appendChild(document.createTextNode(studentFormedJson.address));
+
+	var emailTd=document.createElement("td");
+	emailTd.appendChild(document.createTextNode(studentFormedJson.email));
+
+	tr.appendChild(nifTd);
+	tr.appendChild(nameTd);
+	tr.appendChild(surnameTd);
+	tr.appendChild(zipCodeTd);
+	tr.appendChild(addressTd);
+	tr.appendChild(emailTd);
+
+	table.appendChild(tr);
 }
