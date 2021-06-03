@@ -37,7 +37,7 @@ function addStudent(student) {
 }
 
 function newTitle() {
-    var titleJson = { name: 'Título', level: 'Superior', family: 'Informática', description: 'Descripción' };
+    var titleJson = { idTitulo: 1, name: 'Título', level: 'Superior', family: 'Informática', description: 'Descripción' };
     addTitle(titleJson);
 }
 
@@ -45,6 +45,9 @@ function addTitle(title) {
     var titlesTable = document.getElementById("table");
 
     var titleTr = document.createElement("tr");
+
+    var idTitleTD = document.appendChild("td");
+    idTitleTD.appendChild(document.createTextNode(title.idTitulo));
 
     var nameTitleTd = document.createElement("td");
     nameTitleTd.appendChild(document.createTextNode(title.name));
@@ -58,6 +61,7 @@ function addTitle(title) {
     var descriptionTd = document.createElement("td");
     descriptionTd.appendChild(document.createTextNode(title.description));
 
+    titleTr.appendChild(idTitleTD);
     titleTr.appendChild(nameTitleTd);
     titleTr.appendChild(levelTd);
     titleTr.appendChild(familyTd);
