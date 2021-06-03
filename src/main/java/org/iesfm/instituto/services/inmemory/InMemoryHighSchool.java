@@ -19,6 +19,7 @@ public class InMemoryHighSchool implements HighSchool {
     public InMemoryHighSchool() {
         groups = new HashMap<>();
         students = new HashMap<>();
+        students.put("234343434F", new Student("234343434F", "Mikel", "San Vicente", 34234, "Calle falsa", "mikelsa@gmsdf.domc"));
         titles = new HashMap<>();
         enrollments = new LinkedList<>();
     }
