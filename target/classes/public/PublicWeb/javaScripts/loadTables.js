@@ -38,7 +38,44 @@ function addStudent(student) {
 
 function newTitle() {
     var titleJson = { idTitulo: 1, name: 'Título', level: 'Superior', family: 'Informática', description: 'Descripción' };
+<<<<<<< HEAD
     addTitleFormed(titleJson);
+=======
+    addTitle(titleJson);
+<<<<<<< HEAD
+}
+
+function addTitle(title) {
+    var titlesTable = document.getElementById("table");
+
+    var titleTr = document.createElement("tr");
+
+    var idTitleTD = document.createElement("td");
+    idTitleTD.appendChild(document.createTextNode(title.idTitulo));
+
+    var nameTitleTd = document.createElement("td");
+    nameTitleTd.appendChild(document.createTextNode(title.name));
+
+    var levelTd = document.createElement("td");
+    levelTd.appendChild(document.createTextNode(title.level));
+
+    var familyTd = document.createElement("td");
+    familyTd.appendChild(document.createTextNode(title.family));
+
+    var descriptionTd = document.createElement("td");
+    descriptionTd.appendChild(document.createTextNode(title.description));
+
+    titleTr.appendChild(idTitleTD);
+    titleTr.appendChild(nameTitleTd);
+    titleTr.appendChild(levelTd);
+    titleTr.appendChild(familyTd);
+    titleTr.appendChild(descriptionTd);
+
+    titlesTable.appendChild(titleTr);
+}
+
+=======
+>>>>>>> a7698bd5dd8f0aee679a2875337ddce72d546dc3
 }
 
 function addTitleFormed(title) {
@@ -70,6 +107,7 @@ function addTitleFormed(title) {
     titlesTable.appendChild(titleTr);
 }
 
+>>>>>>> 1faf408b425e4eded3a8388fe585ce6702e22e62
 function newTitleFormed() {
     $.get("/title", function(title, status) {
         for (title of titles) {
@@ -124,7 +162,11 @@ function newGroup() {
     addGroupFormed(group);
 }
 
+<<<<<<< HEAD
+function addGroup(newGroup) {
+=======
 function addGroupFormed(newGroup) {
+>>>>>>> 1faf408b425e4eded3a8388fe585ce6702e22e62
     var table = document.getElementById("table");
 
     var tr = document.createElement("tr");
@@ -157,7 +199,11 @@ function addGroupFormed(newGroup) {
 function newGroupFormed() {
     $.get("/group", function(groups, status) {
         for (group of groups) {
+<<<<<<< HEAD
+            addGroup(group);
+=======
             addGroupFormed(group);
+>>>>>>> 1faf408b425e4eded3a8388fe585ce6702e22e62
         }
     });
 }
