@@ -47,7 +47,7 @@ function addTitleFormed(title) {
     var titleTr = document.createElement("tr");
 
     var idTitleTD = document.createElement("td");
-    idTitleTD.appendChild(document.createTextNode(title.idTitulo));
+    idTitleTD.appendChild(document.createTextNode(title.id));
 
     var nameTitleTd = document.createElement("td");
     nameTitleTd.appendChild(document.createTextNode(title.name));
@@ -56,7 +56,7 @@ function addTitleFormed(title) {
     levelTd.appendChild(document.createTextNode(title.level));
 
     var familyTd = document.createElement("td");
-    familyTd.appendChild(document.createTextNode(title.family));
+    familyTd.appendChild(document.createTextNode(title.area));
 
     var descriptionTd = document.createElement("td");
     descriptionTd.appendChild(document.createTextNode(title.description));

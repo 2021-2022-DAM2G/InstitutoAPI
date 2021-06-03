@@ -3,16 +3,18 @@ package org.iesfm.instituto.controllers;
 import org.iesfm.instituto.Group;
 import org.iesfm.instituto.Student;
 import org.iesfm.instituto.services.HighSchool;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@RestController
 public class GroupController {
 
     private HighSchool highSchool;
+
+    public GroupController(HighSchool highSchool) {
+        this.highSchool = highSchool;
+    }
 
     @RequestMapping(method = RequestMethod.GET, path = "/group")
     public List<Group> getGroups() {
