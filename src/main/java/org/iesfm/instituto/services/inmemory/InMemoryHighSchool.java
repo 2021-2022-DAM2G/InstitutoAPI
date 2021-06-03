@@ -45,4 +45,26 @@ public class InMemoryHighSchool implements HighSchool {
     public void addStudent(Student student) {
         students.put(student.getNif(), student);
     }
+
+    @Override
+    public List<Group> getGroups() {
+        List<Group> groups = new LinkedList<>();
+        groups.addAll(this.groups.values());
+        return groups;
+    }
+
+    @Override
+    public Group getGroup(int id) {
+        return groups.get(id);
+    }
+
+    @Override
+    public void deleteGroup(int id) {
+        groups.remove(id);
+    }
+
+    @Override
+    public void addGroup(Group group) {
+        groups.put(group.getId(), group);
+    }
 }

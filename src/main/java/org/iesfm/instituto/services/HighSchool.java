@@ -1,5 +1,6 @@
 package org.iesfm.instituto.services;
 
+import org.iesfm.instituto.Group;
 import org.iesfm.instituto.Student;
 
 import java.util.List;
@@ -13,4 +14,15 @@ public interface HighSchool {
     void deleteStudent(String nif);
 
     void addStudent(Student student);
+
+    Group getGroup(int id);
+
+    List<Group> getGroups();
+
+    void deleteGroup(int id);
+
+    void addGroup(Group group);
+
 }
+
+
