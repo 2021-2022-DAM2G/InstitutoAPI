@@ -10,7 +10,7 @@ public class Student {
     private int zipCode;
     private String address;
     private String email;
-
+    
     public Student(String nif, String name, String surname, int zipCode, String address, String email) {
         this.nif = nif;
         this.name = name;

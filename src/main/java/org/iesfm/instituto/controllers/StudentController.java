@@ -4,6 +4,7 @@ import org.iesfm.instituto.Student;
 
 import org.iesfm.instituto.services.HighSchool;
 
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.LinkedList;
@@ -33,7 +34,7 @@ public class StudentController {
         highSchool.deleteStudent(nif);
     }
 
-    @RequestMapping(method = RequestMethod.POST, path = "/student")
+    @RequestMapping(method = RequestMethod.POST, path = "/student", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void addStudent(@RequestBody Student student) {
         highSchool.addStudent(student);
     }
