@@ -3,6 +3,7 @@ package org.iesfm.instituto.controllers;
 import org.iesfm.instituto.Student;
 import org.iesfm.instituto.Title;
 import org.iesfm.instituto.services.HighSchool;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -31,7 +32,7 @@ public class TitleController {
         highSchool.deleteTitle(id);
     }
 
-    @RequestMapping(method = RequestMethod.POST, path = "/title")
+    @RequestMapping(method = RequestMethod.POST, path = "/title", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void addTitle(@RequestBody Title title) {
         highSchool.addTitle(title);
     }
