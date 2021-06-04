@@ -1,44 +1,9 @@
-function newStudent() {
-    var studentJson = { nif: '12345678L', name: 'Pepe', surname: 'Díaz', zipCode: '28574', address: 'Calle falsa, 13', email: 'email@fake.com' };
-    addStudent(studentJson);
-}
-
-function addStudent(student) {
-    var studentsTable = document.getElementById("table");
-
-    var studentTr = document.createElement("tr");
-
-    var nifTd = document.createElement("td");
-    nifTd.appendChild(document.createTextNode(student.nif));
-
-    var nameTd = document.createElement("td");
-    nameTd.appendChild(document.createTextNode(student.name));
-
-    var surnameTd = document.createElement("td");
-    surnameTd.appendChild(document.createTextNode(student.surname));
-
-    var zipCodeTd = document.createElement("td");
-    zipCodeTd.appendChild(document.createTextNode(student.zipCode));
-
-    var addressTd = document.createElement("td");
-    addressTd.appendChild(document.createTextNode(student.address));
-
-    var emailTd = document.createElement("td");
-    emailTd.appendChild(document.createTextNode(student.email));
-
-    studentTr.appendChild(nifTd);
-    studentTr.appendChild(nameTd);
-    studentTr.appendChild(surnameTd);
-    studentTr.appendChild(zipCodeTd);
-    studentTr.appendChild(addressTd);
-    studentTr.appendChild(emailTd);
-
-    studentsTable.appendChild(studentTr);
-}
-
-function newTitle() {
-    var titleJson = { idTitulo: 1, name: 'Título', level: 'Superior', family: 'Informática', description: 'Descripción' };
-    addTitleFormed(titleJson);
+function newTitleFormed() {
+    $.get("/title", function(titles, status) {
+        for (title of titles) {
+            addTitleFormed(title);
+        }
+    });
 }
 
 function addTitleFormed(title) {
@@ -68,14 +33,6 @@ function addTitleFormed(title) {
     titleTr.appendChild(descriptionTd);
 
     titlesTable.appendChild(titleTr);
-}
-
-function newTitleFormed() {
-    $.get("/title", function(titles, status) {
-        for (title of titles) {
-            addTitleFormed(title);
-        }
-    });
 }
 
 function newStudentFormed() {
@@ -119,9 +76,12 @@ function addStudentFormed(studentFormedJson) {
     table.appendChild(tr);
 }
 
-function newGroup() {
-    var group = { id: 1, course: "Dam1", letter: "A", title: "Nombre Titulo", year: 2021 }
-    addGroupFormed(group);
+function newGroupFormed() {
+    $.get("/group", function(groups, status) {
+        for (group of groups) {
+            addGroupFormed(group);
+        }
+    });
 }
 
 function addGroupFormed(newGroup) {
@@ -151,13 +111,4 @@ function addGroupFormed(newGroup) {
     tr.appendChild(year);
 
     table.appendChild(tr);
-}
-
-
-function newGroupFormed() {
-    $.get("/group", function(groups, status) {
-        for (group of groups) {
-            addGroupFormed(group);
-        }
-    });
 }
