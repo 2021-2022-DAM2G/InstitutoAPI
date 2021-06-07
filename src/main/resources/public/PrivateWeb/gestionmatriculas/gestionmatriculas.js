@@ -55,7 +55,7 @@ function newEnrrollment(json) {
 		window.alert("Hay que rellenar ambas secciones.");
 	} else{
 		$.ajax({
-          url:"/student",
+          url:"/title",
           type:"POST",
           data: JSON.stringify(json),
           contentType:"application/json; charset=utf-8",
