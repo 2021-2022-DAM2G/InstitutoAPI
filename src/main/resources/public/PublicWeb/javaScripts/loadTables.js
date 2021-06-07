@@ -76,18 +76,6 @@ function addStudentFormed(studentFormedJson) {
     table.appendChild(tr);
 }
 
-function newStudentFormed() {
-		$.ajax({
-          url:"/student",
-          type:"POST",
-          data: JSON.stringify(json),
-          contentType:"application/json; charset=utf-8",
-          success: function(){
-            alert("Estudiante creado");
-          }
-        });
-}
-
 function newGroupFormed() {
     $.get("/group", function(groups, status) {
         for (group of groups) {

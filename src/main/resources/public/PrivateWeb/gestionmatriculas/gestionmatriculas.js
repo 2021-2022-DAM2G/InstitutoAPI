@@ -48,4 +48,20 @@ function addEnrollment(json) {
 		tablaPrincipal.appendChild(trTable);
 
 	}
+	
+function newEnrrollment(json) {
+	if (json.nifStudent==''|| json.enroleYear=='' || json.title=='' 
+		|| json.course=='' || json.status==''){
+		window.alert("Hay que rellenar ambas secciones.");
+	} else{
+		$.ajax({
+          url:"/title",
+          type:"POST",
+          data: JSON.stringify(json),
+          contentType:"application/json; charset=utf-8",
+          success: function(){
+            alert("Matricula creada");
+          }
+        });
+}
 }
