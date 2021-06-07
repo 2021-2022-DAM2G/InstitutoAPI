@@ -1,65 +1,65 @@
-CREATE DATABASE instituto;
+	-- DROP DATABASE IF EXISTS Instituto;
 
-USE instituto;
+CREATE DATABASE IF NOT EXISTS Instituto;
+    
+USE Instituto;
 
-CREATE TABLE alumnos(
-id INT AUTO_INCREMENT NOT NULL primary key,
-nif VARCHAR(9) NOT NULL,
-nombre VARCHAR(20) NOT NULL,
-apellido1 VARCHAR(20) NOT NULL,
-apellido2 VARCHAR(20) ,
-codigo_postal INT NOT NULL,
-direcion VARCHAR(90),
-mail VARCHAR(40) NOT NULL
+CREATE TABLE IF NOT EXISTS student (
+nif					VARCHAR (9) PRIMARY KEY,
+student_name		VARCHAR (40) NOT NULL,
+student_surname		VARCHAR (80) NOT NULL,
+zipcode				INT NOT NULL,
+address				VARCHAR (100) NOT NULL,
+email				VARCHAR (40) NOT NULL
 );
 
+CREATE TABLE IF NOT EXISTS title (
+title_id			INT AUTO_INCREMENT,
+title_name			VARCHAR (40) UNIQUE NOT NULL,
+title_level			VARCHAR (10) NOT NULL,
+family				VARCHAR (20) NOT NULL,
+title_description	VARCHAR (100) NOT NULL,
 
-
-CREATE TABLE titulos(
-id_titulo INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
-nombre VARCHAR(20) NOT NULL,
-nivel VARCHAR(20) NOT NULL,
-familia VARCHAR(20) NOT NULL,
-descripcion VARCHAR(90) NOT NULL
-
+PRIMARY KEY (title_Id, title_Name)
 );
 
-CREATE TABLE grupos(
-id_grupo INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
-curso INT NOT NULL,
-letra VARCHAR(10) NOT NULL,
-titulo VARCHAR(60) NOT NULL,
-año INT NOT NULL
-
+CREATE TABLE IF NOT EXISTS studentGroup (	
+group_id			INT AUTO_INCREMENT PRIMARY KEY,
+class 				VARCHAR (10) NOT NULL,
+grade				INT NOT NULL,
+title				VARCHAR (40) NOT NULL,
+groupYear			INT NOT NULL
 );
 
-CREATE TABLE matriculas(
-id_matricula INT AUTO_INCREMENT NOT NULL,
-id_alumno INT NOT NULL,
-año_matricula int NOT NULL,
-id_titulo INT NOT NULL,
-id_curso INT NOT NULL,
-estado VARCHAR(30) NOT NULL,
-CONSTRAINT Pk_matricula
-PRIMARY KEY (id_matricula, id_alumno,id_titulo, id_curso ),
+CREATE TABLE registration(
+registration_id		INT AUTO_INCREMENT PRIMARY KEY,
+student_nif			VARCHAR (9) NOT NULL,
+registration_year	INT NOT NULL,
+title 				VARCHAR (20) NOT NULL,
+grade_id			INT NOT NULL,
+registration_status	VARCHAR (30) NOT NULL,
 
-CONSTRAINT FK_matriculas_alumnos
-FOREIGN KEY (id_alumno) 
-REFERENCES alumnos (id)
-    ON UPDATE CASCADE
+CONSTRAINT FK_Student_Registration
+FOREIGN KEY (student_nif) 
+REFERENCES student (nif)
+	ON UPDATE CASCADE
     ON DELETE CASCADE,
+    
 
-CONSTRAINT FK_matriculas_titulos
-FOREIGN KEY (id_titulo) 
-REFERENCES titulos (id_titulo)
-    ON UPDATE CASCADE
+CONSTRAINT FK_Title_Registration
+FOREIGN KEY (title)
+REFERENCES title (title_name)
+	ON UPDATE CASCADE
     ON DELETE CASCADE,
+    
 
-
-CONSTRAINT FK_matriculas_grupo
-FOREIGN KEY (id_curso) 
-REFERENCES grupos (id_grupo)
-    ON UPDATE CASCADE
+CONSTRAINT FK_Group_Registration
+FOREIGN KEY (grade_id)
+REFERENCES studentGroup (group_id)
+	ON UPDATE CASCADE
     ON DELETE CASCADE
 
 );
+
+
+
