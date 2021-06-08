@@ -21,9 +21,9 @@
         <li><a href="gestiontitulos.html">Gestion de Titulos</a></li>
         <li><a href="gestiongrupos.html"> Gestion de Grupos</a></li>
         <li><a href="gestionalumnos.html">Gestion de Alumnos</a></li>
-        <li><a href="gestionmatriculas.html">Gestion de Matrículas</a></li>
+        <li><a id="current" href="gestionmatriculas.html">Gestion de Matrículas</a></li>
       </ul><table id="nav">
-        
+
       </table>
     </nav>
     
@@ -44,7 +44,7 @@
         <label for="status">Estado:</label><br>
         <input type="text" id="status" name="status"><br><br>
 
-        <button type="button" onclick="makeEnrollment()" > Añadir datos</button> 
+        <button type="button" onclick="addEnrollment()" > Añadir datos</button> 
       </form> 
     </section>
 
@@ -57,7 +57,7 @@
           <th>Curso</th>
           <th>Estado</th>  
         </tr>
-        
+
       </table>
     </section>
   </body>
