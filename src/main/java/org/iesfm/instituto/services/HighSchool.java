@@ -1,5 +1,6 @@
 package org.iesfm.instituto.services;
 
+import org.iesfm.instituto.Enrollment;
 import org.iesfm.instituto.Group;
 import org.iesfm.instituto.Student;
 import org.iesfm.instituto.Title;
@@ -31,6 +32,14 @@ public interface HighSchool {
     void deleteTitle(int id);
 
     void addTitle(Title title);
+
+    List<Enrollment> getEnrollments();
+
+    Enrollment getEnrollment(String studentNif);
+
+    void deleteEnrollment(String studentNif);
+
+    void addEnrollment(Enrollment enrollment);
 }
 
 
