@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="css/css_web.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script type="text/javascript" src="javaScript/privateJavaScript.js"></script>
+  <title>IES Federica Montseny - Gestion de Matriculas</title>
+
+</head>
+<body>
+  <body>
+    <header id="logoTop">
+      <div id="imag1"><img  id="banner" src="imagenes/logoTop.JPG"></div>
+      <div id="imag1"><a href="perfil.html"><img id="user" src="imagenes/icono.png"></a></div>
+    </header>
+
+    <nav id="navegador">
+      <ul>
+        <li><a href="gestiontitulos.html">Gestion de Titulos</a></li>
+        <li><a href="gestiongrupos.html"> Gestion de Grupos</a></li>
+        <li><a href="gestionalumnos.html">Gestion de Alumnos</a></li>
+        <li><a id="current" href="gestionmatriculas.html">Gestion de Matrículas</a></li>
+      </ul><table id="nav">
+
+      </table>
+    </nav>
+    
+    <section id="formulario">
+      <form>
+        <label for="nifStudent">NIF del alumno:</label><br>
+        <input type="text" id="nifStudent" name="nifStudent" ><br>
+
+        <label for="enroleYear">Año de matricula:</label><br>
+        <input type="text" id="enroleYear" name="enroleYear" ><br>
+
+        <label for="title">Titulo:</label><br>
+        <input type="text" id="title" name="title" ><br>
+
+        <label for="course">Curso</label><br>
+        <input type="text" id="course" name="course" ><br>
+
+        <label for="status">Estado:</label><br>
+        <input type="text" id="status" name="status"><br><br>
+
+        <button type="button" onclick="addEnrollment()" > Añadir datos</button> 
+      </form> 
+    </section>
+
+    <section>
+      <table id="infoTabla">
+        <tr>
+          <th>Nif del alumno</th>
+          <th>Año de matrícula</th>
+          <th>Título</th>
+          <th>Curso</th>
+          <th>Estado</th>  
+        </tr>
+
+      </table>
+    </section>
+  </body>
+  </html>
