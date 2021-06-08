@@ -91,4 +91,29 @@ public class InMemoryHighSchool implements HighSchool {
     public void addTitle(Title title) {
         titles.put(title.getId(), title);
     }
+
+    @Override
+    public List<Enrollment> getEnrollments() {
+        return this.enrollments;
+    }
+
+    @Override
+    public Enrollment getEnrollment(String studentNif) {
+        for (Enrollment enrollment : enrollments) {
+            if (enrollment.getStudentNif().equals(studentNif)) {
+                return enrollment;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public void deleteEnrollment(String studentNif) {
+        enrollments.remove(getEnrollment(studentNif));
+    }
+
+    @Override
+    public void addEnrollment(Enrollment enrollment) {
+        enrollments.add(enrollment);
+    }
 }
