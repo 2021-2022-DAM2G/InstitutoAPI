@@ -8,7 +8,9 @@ import org.iesfm.instituto.services.HighSchool;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class MysqlHighSchool implements HighSchool {
 
@@ -17,8 +19,6 @@ public class MysqlHighSchool implements HighSchool {
 
     @Override
     public List<Student> getStudents() {
-
-
         return jdbcTemplate.query(
                 "select * from student",
                 (rs, rowNum) ->
@@ -35,12 +35,31 @@ public class MysqlHighSchool implements HighSchool {
 
     @Override
     public Student getStudent(String nif) {
-        return null;
+        Map<String, String> params = new HashMap<>();
+        params.put("nif", nif);
+        return jdbcTemplate.queryForObject(
+                "select * from student where nif=:nif",
+                params,
+                (rs, rowNum) ->
+                        new Student(
+                                rs.getString("nif"),
+                                rs.getString("name"),
+                                rs.getString("surname"),
+                                rs.getInt("zipCode"),
+                                rs.getString("address"),
+                                rs.getString("email")
+                        )
+        );
     }
 
     @Override
     public void deleteStudent(String nif) {
-
+        Map<String, String> params = new HashMap<>();
+        params.put("nif", nif);
+        jdbcTemplate.update(
+                "DELETE FROM student where nif=:nif",
+                params
+        );
     }
 
     @Override
