@@ -31,7 +31,7 @@ title				VARCHAR (40) NOT NULL,
 groupYear			INT NOT NULL
 );
 
-CREATE TABLE registration(
+CREATE TABLE IF NOT EXISTS registration(
 registration_id		INT AUTO_INCREMENT PRIMARY KEY,
 student_nif			VARCHAR (9) NOT NULL,
 registration_year	INT NOT NULL,
