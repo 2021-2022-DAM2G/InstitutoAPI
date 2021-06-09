@@ -285,8 +285,7 @@ function addGroupFormed(newGroup) {
 function newEnrollmentFormed() {
     $.get("/enrollment", function(enrollments, status) {
         for (enrollment of enrollments) {
-        	alert(JSON.stringify(enrollment));
-            addGroupFormed(enrollment);
+            addEnrollmentFormed(enrollment);
         }
     });
 }

@@ -1,0 +1,212 @@
+/*Partes comunes*/
+
+body {
+    max-width: 10000px;
+    margin-left: 5%;
+    margin-right: 5%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.banner {
+    image-rendering: optimizeQuality;
+    width: 810px;
+    height: 210px;
+    margin-left: 25%;
+}
+
+.navbar {
+    justify-content: center;
+}
+
+#current {
+    background-color: darkorange;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    overflow: hidden;
+    background-color: #007f3f;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+li a:hover {
+    background-color: darkorange;
+    text-decoration: underline;
+}
+
+.valores {
+    background-color: white;
+}
+
+#separacionSectionFooter {
+    background-color: #007f3f;
+    margin-top: 5%;
+    height: 8px;
+}
+
+#separacionTitleTables {
+    background-color: #007f3f;
+    margin-top: 2%;
+    height: 8px;
+}
+
+footer {
+    display: inline-block;
+    display: grid;
+    grid-template-columns: 20%, 9.9%, 30%, 0.01%, 30%, 10%;
+    margin-top: 2%;
+}
+
+footer p {
+    font-family: Arial, Verdana, Helvetica;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+#trash {
+    width: 15px;
+}
+
+#footGreen {
+    display: inline-block;
+    margin-bottom: 10px;
+    color: #007f3f;
+    font-size: 35px;
+}
+
+#footMontseny {
+    display: inline-block;
+    margin-right: 10px;
+    color: #f09101;
+    font-size: 30px;
+    grid-column-start: 3;
+    grid-column-end: 3;
+}
+
+#address {
+    display: inline-block;
+    margin-right: 15px;
+    text-align: center;
+    color: grey;
+    grid-column-start: 5;
+    grid-column-end: 5;
+}
+
+#greenBar {
+    background-color: #007f3f;
+    grid-column-start: 4;
+    grid-column-end: 4;
+    width: 15px;
+}
+
+#educaMadrid {
+    margin-left: 5px;
+    grid-column-start: 6;
+    grid-column-end: 6;
+}
+
+#logo {
+    margin-top: 25px;
+    grid-column-start: 2;
+    grid-column-end: 2;
+    width: 100px;
+}
+
+#whiteSpace{
+    width: 200px;
+    grid-column-start: 1;
+    grid-column-end: 1;
+}
+
+/*Fin partes comunes*/
+
+
+/*Comienzo Pagina principal */
+
+p {
+    text-align: justify;
+}
+
+#logoErasmus {
+    float: left;
+    margin-right: 1%;
+}
+
+.erasmus {
+    margin-top: 2%;
+}
+
+#logoCoach {
+    float: left;
+    margin-right: 1%;
+}
+
+.coaching {
+    margin-top: 7%;
+}
+
+#logoActividades {
+    float: left;
+    margin-right: 1%;
+}
+
+.extraescolares {
+    margin-top: 3%;
+}
+
+#logoEmprende {
+    float: left;
+    margin-right: 1%;
+}
+
+.emprende {
+    margin-top: 1%;
+}
+
+
+/*FIN pagina principal*/
+
+
+/* Pagina de Alumnos Aceptados */
+
+#table {
+    margin-top: 50px;
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#table td,
+#table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#table tr:hover {
+    background-color: darkorange;
+}
+
+#table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #007f3f;
+    color: white;
+}
