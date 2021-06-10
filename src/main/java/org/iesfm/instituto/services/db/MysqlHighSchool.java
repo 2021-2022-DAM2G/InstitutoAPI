@@ -43,9 +43,9 @@ public class MysqlHighSchool implements HighSchool {
                 (rs, rowNum) ->
                         new Student(
                                 rs.getString("nif"),
-                                rs.getString("name"),
-                                rs.getString("surname"),
-                                rs.getInt("zipCode"),
+                                rs.getString("student_name"),
+                                rs.getString("student_surname"),
+                                rs.getInt("zipcode"),
                                 rs.getString("address"),
                                 rs.getString("email")
                         )
@@ -64,7 +64,20 @@ public class MysqlHighSchool implements HighSchool {
 
     @Override
     public void addStudent(Student student) {
+        Map<String, Object> params = new HashMap<>();
 
+        params.put("nif", student.getNif());
+        params.put("name", student.getName());
+        params.put("surname", student.getSurname());
+        params.put("zipCode", student.getZipCode());
+        params.put("address", student.getAddress());
+        params.put("email", student.getEmail());
+
+        jdbcTemplate.update(
+                "INSERT INTO titleGroup (nif, student_name, student_surname, zipcode, address, email)" +
+                        "VALUES (:nif, :name, :surname, :zipCode, :address, :email)",
+                params
+        );
     }
 
     @Override
@@ -72,7 +85,7 @@ public class MysqlHighSchool implements HighSchool {
         Map<String, Integer> params = new HashMap<>();
         params.put("id", id);
         return jdbcTemplate.queryForObject(
-                "SELECT * FROM titleGroup where group_id=:group_id",
+                "SELECT * FROM titleGroup where group_id=:id",
                 params,
                 (rs, rowNum) ->
                         new Group(
@@ -105,7 +118,7 @@ public class MysqlHighSchool implements HighSchool {
         Map<String, Integer> params = new HashMap<>();
         params.put("id", id);
         jdbcTemplate.update(
-                "DELETE FROM titleGroup where group_id=:group_id",
+                "DELETE FROM titleGroup where group_id=:id",
                 params
         );
     }
