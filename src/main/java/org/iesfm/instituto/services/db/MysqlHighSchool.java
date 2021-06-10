@@ -20,7 +20,7 @@ public class MysqlHighSchool implements HighSchool {
     @Override
     public List<Student> getStudents() {
         return jdbcTemplate.query(
-                "select * from student",
+                "SELECT * FROM student",
                 (rs, rowNum) ->
                         new Student(
                                 rs.getString("nif"),
@@ -38,7 +38,7 @@ public class MysqlHighSchool implements HighSchool {
         Map<String, String> params = new HashMap<>();
         params.put("nif", nif);
         return jdbcTemplate.queryForObject(
-                "select * from student where nif=:nif",
+                "SELECT * FROM student where nif=:nif",
                 params,
                 (rs, rowNum) ->
                         new Student(
@@ -89,22 +89,50 @@ public class MysqlHighSchool implements HighSchool {
 
     @Override
     public List<Title> getTitles() {
-        return null;
+        return jdbcTemplate.query(
+                "SELECT * FROM title",
+                (rs, rowNum) ->
+                        new Title(
+                                rs.getInt("id"),
+                                rs.getString("name"),
+                                rs.getString("level"),
+                                rs.getString("area"),
+                                rs.getString("description")
+                        )
+        );
     }
 
     @Override
     public Title getTitle(int id) {
-        return null;
+        Map<String, Integer> params = new HashMap<>();
+        params.put("id", id);
+        return jdbcTemplate.queryForObject(
+                "SELECT * FROM title where id=:id",
+                params,
+                (rs, rowNum) ->
+                        new Title(
+                                rs.getInt("id"),
+                                rs.getString("name"),
+                                rs.getString("level"),
+                                rs.getString("area"),
+                                rs.getString("description")
+                        )
+        );
     }
 
     @Override
     public void deleteTitle(int id) {
-
+        Map<String, Integer> params = new HashMap<>();
+        params.put("id", id);
+        jdbcTemplate.update(
+                "DELETE FROM title where id=:id",
+                params
+        );
     }
 
     @Override
     public void addTitle(Title title) {
-
+        
     }
 
     @Override
