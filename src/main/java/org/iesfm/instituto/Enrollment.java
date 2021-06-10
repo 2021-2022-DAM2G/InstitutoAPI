@@ -8,13 +8,15 @@ public class Enrollment {
     public static final String DENIED = "Denied";
     public static final String INPROCESS = "In process";
 
+    private Integer id;
     private String studentNif;
     private int year;
     private String title;
     private String course;
     private String status;
 
-    public Enrollment(String studentNif, int year, String title, String course, String status) {
+    public Enrollment(Integer id, String studentNif, int year, String title, String course, String status) {
+        this.id = id;
         this.studentNif = studentNif;
         this.year = year;
         this.title = title;
@@ -22,8 +24,13 @@ public class Enrollment {
         this.status = status;
     }
 
+    public Integer getId() {
+        return id;
+    }
 
-    // getters setters hashCode equals toString
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getStudentNif() {
         return studentNif;
@@ -70,22 +77,19 @@ public class Enrollment {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Enrollment that = (Enrollment) o;
-        return year == that.year &&
-                Objects.equals(studentNif, that.studentNif) &&
-                Objects.equals(title, that.title) &&
-                Objects.equals(course, that.course) &&
-                Objects.equals(status, that.status);
+        return year == that.year && Objects.equals(id, that.id) && Objects.equals(studentNif, that.studentNif) && Objects.equals(title, that.title) && Objects.equals(course, that.course) && Objects.equals(status, that.status);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(studentNif, year, title, course, status);
+        return Objects.hash(id, studentNif, year, title, course, status);
     }
 
     @Override
     public String toString() {
         return "Enrollment{" +
-                "studentNif='" + studentNif + '\'' +
+                "id=" + id +
+                ", studentNif='" + studentNif + '\'' +
                 ", year=" + year +
                 ", title='" + title + '\'' +
                 ", course='" + course + '\'' +
