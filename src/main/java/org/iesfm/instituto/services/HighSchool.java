@@ -35,9 +35,9 @@ public interface HighSchool {
 
     List<Enrollment> getEnrollments();
 
-    Enrollment getEnrollment(String studentNif);
+    Enrollment getEnrollment(Integer id);
 
-    void deleteEnrollment(String studentNif);
+    void deleteEnrollment(Integer id);
 
     void addEnrollment(Enrollment enrollment);
 }

@@ -21,14 +21,14 @@ public class EnrollmentController {
         return highSchool.getEnrollments();
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/enrollment/{studentNif}")
-    public Enrollment getEnrollment(@PathVariable("studentNif") String studentNif) {
-        return highSchool.getEnrollment(studentNif);
+    @RequestMapping(method = RequestMethod.GET, path = "/enrollment/{id}")
+    public Enrollment getEnrollment(@PathVariable("id") Integer id) {
+        return highSchool.getEnrollment(id);
     }
 
-    @RequestMapping(method = RequestMethod.DELETE, path = "/enrollment/{studentNif}")
-    public void deleteEnrollment(@PathVariable("studentNif") String studentNif) {
-        highSchool.deleteEnrollment(studentNif);
+    @RequestMapping(method = RequestMethod.DELETE, path = "/enrollment/{id}")
+    public void deleteEnrollment(@PathVariable("id") Integer id) {
+        highSchool.deleteEnrollment(id);
     }
 
     @RequestMapping(method = RequestMethod.POST, path = "/enrollment", consumes = MediaType.APPLICATION_JSON_VALUE)

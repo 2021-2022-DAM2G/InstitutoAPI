@@ -98,9 +98,9 @@ public class InMemoryHighSchool implements HighSchool {
     }
 
     @Override
-    public Enrollment getEnrollment(String studentNif) {
+    public Enrollment getEnrollment(Integer id) {
         for (Enrollment enrollment : enrollments) {
-            if (enrollment.getStudentNif().equals(studentNif)) {
+            if (enrollment.getId() == id) {
                 return enrollment;
             }
         }
@@ -108,8 +108,8 @@ public class InMemoryHighSchool implements HighSchool {
     }
 
     @Override
-    public void deleteEnrollment(String studentNif) {
-        enrollments.remove(getEnrollment(studentNif));
+    public void deleteEnrollment(Integer id) {
+        enrollments.remove(getEnrollment(id));
     }
 
     @Override

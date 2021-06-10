@@ -131,11 +131,11 @@ public class MysqlHighSchool implements HighSchool {
                 "SELECT * FROM title",
                 (rs, rowNum) ->
                         new Title(
-                                rs.getInt("id"),
-                                rs.getString("name"),
-                                rs.getString("level"),
-                                rs.getString("area"),
-                                rs.getString("description")
+                                rs.getInt("title_id"),
+                                rs.getString("title_name"),
+                                rs.getString("title_level"),
+                                rs.getString("family"),
+                                rs.getString("title_description")
                         )
         );
     }
@@ -145,15 +145,15 @@ public class MysqlHighSchool implements HighSchool {
         Map<String, Integer> params = new HashMap<>();
         params.put("id", id);
         return jdbcTemplate.queryForObject(
-                "SELECT * FROM title where id=:id",
+                "SELECT * FROM title where title_id=:id",
                 params,
                 (rs, rowNum) ->
                         new Title(
-                                rs.getInt("id"),
-                                rs.getString("name"),
-                                rs.getString("level"),
-                                rs.getString("area"),
-                                rs.getString("description")
+                                rs.getInt("title_id"),
+                                rs.getString("title_name"),
+                                rs.getString("title_level"),
+                                rs.getString("family"),
+                                rs.getString("title_description")
                         )
         );
     }
@@ -163,17 +163,20 @@ public class MysqlHighSchool implements HighSchool {
         Map<String, Integer> params = new HashMap<>();
         params.put("id", id);
         jdbcTemplate.update(
-                "DELETE FROM title where id=:id",
+                "DELETE FROM title where title_id=:id",
                 params
         );
     }
 
     @Override
     public void addTitle(Title title) {
-        Map<String, Title> params = new HashMap<>();
-        params.put("title", title);
+        Map<String, Object> params = new HashMap<>();
+        params.put("name", title.getName());
+        params.put("level", title.getLevel());
+        params.put("area", title.getArea());
+        params.put("description", title.getDescription());
         jdbcTemplate.update(
-                "INSERT INTO title VALUES (:id, :name, :level, :area, :description)",
+                "INSERT INTO title (title_name, title_level, family, title_description) VALUES (:name, :level, :area, :description)",
                 params
         );
     }
@@ -182,9 +185,10 @@ public class MysqlHighSchool implements HighSchool {
     public List<Enrollment> getEnrollments() {
 
         return jdbcTemplate.query(
-                "SELECT * FROM Enrollment",
+                "SELECT * FROM enrollment",
                 (rs, rowNum) ->
                         new Enrollment(
+                                rs.getInt("id"),
                                 rs.getString("studentNif"),
                                 rs.getInt("year"),
                                 rs.getString("title"),
@@ -195,15 +199,16 @@ public class MysqlHighSchool implements HighSchool {
     }
 
     @Override
-    public Enrollment getEnrollment(String studentNif) {
+    public Enrollment getEnrollment(Integer id) {
 
-        HashMap<String, String> params = new HashMap<>();
-        params.put("studentNif", studentNif);
+        HashMap<String, Integer> params = new HashMap<>();
+        params.put("id", id);
         return jdbcTemplate.queryForObject(
-                "SELECT * FROM Enrollment where studentNif=:studentNif",
+                "SELECT * FROM enrollment where id=:id",
                 params,
                 (rs, rowNum) ->
                         new Enrollment(
+                                rs.getInt("id"),
                                 rs.getString("studentNif"),
                                 rs.getInt("year"),
                                 rs.getString("title"),
@@ -214,11 +219,11 @@ public class MysqlHighSchool implements HighSchool {
     }
 
     @Override
-    public void deleteEnrollment(String studentNif) {
-        HashMap<String, String> params = new HashMap<>();
-        params.put("studentNif", studentNif);
+    public void deleteEnrollment(Integer id) {
+        HashMap<String, Integer> params = new HashMap<>();
+        params.put("id", id);
         jdbcTemplate.update(
-                "DELETE FROM Enrollment where studentNif=:studentNif",
+                "DELETE FROM enrollment where id=:id",
                 params
         );
     }
@@ -226,5 +231,15 @@ public class MysqlHighSchool implements HighSchool {
     @Override
     public void addEnrollment(Enrollment enrollment) {
 
+        HashMap<String, Object> params = new HashMap<>();
+        params.put("studentNif", enrollment.getStudentNif());
+        params.put("year", enrollment.getYear());
+        params.put("title", enrollment.getTitle());
+        params.put("course", enrollment.getCourse());
+        params.put("status", enrollment.getStatus());
+        jdbcTemplate.update(
+                "INSERT INTO enrollment (studentNif, year, title, course, status) VALUES (:studentNif, :year, :title, :course, :status)",
+                params
+        );
     }
 }
