@@ -144,7 +144,7 @@ public class MysqlHighSchool implements HighSchool {
                 params,
                 (rs, rowNum) ->
                         new Title(
-                                rs.getInt("idtitle_id"),
+                                rs.getInt("title_id"),
                                 rs.getString("title_name"),
                                 rs.getString("title_level"),
                                 rs.getString("family"),
