@@ -69,17 +69,45 @@ public class MysqlHighSchool implements HighSchool {
 
     @Override
     public Group getGroup(int id) {
-        return null;
+        Map<String, Integer> params = new HashMap<>();
+        params.put("id", id);
+        return jdbcTemplate.queryForObject(
+                "SELECT * FROM titleGroup where id=:id",
+                params,
+                (rs, rowNum) ->
+                        new Group(
+                                rs.getInt("group_id"),
+                                rs.getString("class"),
+                                rs.getString("grade"),
+                                rs.getString("title"),
+                                rs.getInt("groupYear")
+                        )
+        );
     }
 
     @Override
     public List<Group> getGroups() {
-        return null;
+        return jdbcTemplate.query(
+                "SELECT * FROM titleGroup",
+                (rs, rowNum) ->
+                        new Group(
+                                rs.getInt("group_id"),
+                                rs.getString("class"),
+                                rs.getString("grade"),
+                                rs.getString("title"),
+                                rs.getInt("groupYear")
+                        )
+        );
     }
 
     @Override
     public void deleteGroup(int id) {
-
+        Map<String, Integer> params = new HashMap<>();
+        params.put("id", id);
+        jdbcTemplate.update(
+                "DELETE FROM titleGroup where nif=:nif",
+                params
+        );
     }
 
     @Override
