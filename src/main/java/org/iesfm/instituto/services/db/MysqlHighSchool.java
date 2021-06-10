@@ -132,22 +132,52 @@ public class MysqlHighSchool implements HighSchool {
 
     @Override
     public void addTitle(Title title) {
-        
+
     }
 
     @Override
     public List<Enrollment> getEnrollments() {
-        return null;
+
+        return jdbcTemplate.query(
+                "SELECT * FROM Enrollment",
+                (rs, rowNum) ->
+                        new Enrollment(
+                                rs.getString("studentNif"),
+                                rs.getInt("year"),
+                                rs.getString("title"),
+                                rs.getString("course"),
+                                rs.getString("status")
+                        )
+        );
     }
 
     @Override
     public Enrollment getEnrollment(String studentNif) {
-        return null;
+
+        HashMap<String, String> params = new HashMap<>();
+        params.put("studentNif", studentNif);
+        return jdbcTemplate.queryForObject(
+                "SELECT * FROM Enrollment where studentNif=:studentNif",
+                params,
+                (rs, rowNum) ->
+                        new Enrollment(
+                                rs.getString("studentNif"),
+                                rs.getInt("year"),
+                                rs.getString("title"),
+                                rs.getString("course"),
+                                rs.getString("status")
+                        )
+        );
     }
 
     @Override
     public void deleteEnrollment(String studentNif) {
-
+        HashMap<String, String> params = new HashMap<>();
+        params.put("studentNif", studentNif);
+        jdbcTemplate.update(
+                "DELETE FROM Enrollment where studentNif=:studentNif",
+                params
+        );
     }
 
     @Override
