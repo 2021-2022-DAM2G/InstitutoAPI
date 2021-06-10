@@ -112,7 +112,12 @@ public class MysqlHighSchool implements HighSchool {
 
     @Override
     public void addGroup(Group group) {
-
+        Map<String, Group> params = new HashMap<>();
+        params.put("group", group);
+        jdbcTemplate.update(
+                "INSERT INTO title VALUES (:group_id, :class, :grade, :title, :groupYear)",
+                params
+        );
     }
 
     @Override
