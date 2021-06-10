@@ -14,7 +14,7 @@ public class Title {
     public static final String MECHANICS = "Mechanics";
     public static final String ADMINISTRATION = "Administration";
 
-    private int id;
+    private Integer id;
     private String name;
     private String level;
     private String area;
@@ -30,11 +30,11 @@ public class Title {
 
     // getters setters hashCode equals toString
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
