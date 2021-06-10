@@ -132,7 +132,12 @@ public class MysqlHighSchool implements HighSchool {
 
     @Override
     public void addTitle(Title title) {
-
+        Map<String, Title> params = new HashMap<>();
+        params.put("title", title);
+        jdbcTemplate.update(
+                "INSERT INTO title VALUES (:id, :name, :level, :area, :description)",
+                params
+        );
     }
 
     @Override
