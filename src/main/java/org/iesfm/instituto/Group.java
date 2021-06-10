@@ -4,28 +4,28 @@ import java.util.Objects;
 
 public class Group {
 
-    private int id;
+    private Integer id;
     private String course;
     private String letter;
-    private String title;
+    private Integer titleId;
     private int year;
 
-    public Group(int id, String course, String letter, String title, int year) {
+    public Group(Integer id, String course, String letter, Integer titleId, int year) {
         this.id = id;
         this.course = course;
         this.letter = letter;
-        this.title = title;
+        this.titleId = titleId;
         this.year = year;
     }
 
 
     // getters setters hashCode equals toString
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -45,12 +45,12 @@ public class Group {
         this.letter = letter;
     }
 
-    public String getTitle() {
-        return title;
+    public Integer getTitleId() {
+        return titleId;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setTitleId(Integer titleId) {
+        this.titleId = titleId;
     }
 
     public int getYear() {
@@ -70,12 +70,12 @@ public class Group {
                 year == group.year &&
                 Objects.equals(course, group.course) &&
                 Objects.equals(letter, group.letter) &&
-                Objects.equals(title, group.title);
+                Objects.equals(titleId, group.titleId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, course, letter, title, year);
+        return Objects.hash(id, course, letter, titleId, year);
     }
 
     @Override
@@ -84,7 +84,7 @@ public class Group {
                 "id=" + id +
                 ", course='" + course + '\'' +
                 ", letter='" + letter + '\'' +
-                ", title='" + title + '\'' +
+                ", title='" + titleId + '\'' +
                 ", year=" + year +
                 '}';
     }

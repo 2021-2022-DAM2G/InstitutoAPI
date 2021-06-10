@@ -72,7 +72,7 @@ public class MysqlHighSchool implements HighSchool {
         Map<String, Integer> params = new HashMap<>();
         params.put("id", id);
         return jdbcTemplate.queryForObject(
-                "SELECT * FROM titleGroup where id=:id",
+                "SELECT * FROM titleGroup where group_id=:group_id",
                 params,
                 (rs, rowNum) ->
                         new Group(
@@ -94,7 +94,7 @@ public class MysqlHighSchool implements HighSchool {
                                 rs.getInt("group_id"),
                                 rs.getString("class"),
                                 rs.getString("grade"),
-                                rs.getString("title"),
+                                rs.getInt("title"),
                                 rs.getInt("groupYear")
                         )
         );
@@ -105,17 +105,22 @@ public class MysqlHighSchool implements HighSchool {
         Map<String, Integer> params = new HashMap<>();
         params.put("id", id);
         jdbcTemplate.update(
-                "DELETE FROM titleGroup where nif=:nif",
+                "DELETE FROM titleGroup where group_id=:group_id",
                 params
         );
     }
 
     @Override
     public void addGroup(Group group) {
-        Map<String, Group> params = new HashMap<>();
-        params.put("group", group);
+        Map<String, Object> params = new HashMap<>();
+
+        params.put("class", group.getLetter());
+        params.put("grade", group.getCourse());
+        params.put("title", group.getTitleId());
+        params.put("groupYear", group.getYear());
+
         jdbcTemplate.update(
-                "INSERT INTO title VALUES (:group_id, :class, :grade, :title, :groupYear)",
+                "INSERT INTO titleGroup (class, grade, title, groupYear) VALUES (:class, :grade, :title, :groupYear)",
                 params
         );
     }
