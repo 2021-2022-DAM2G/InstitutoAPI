@@ -121,11 +121,11 @@ public class MysqlHighSchool implements HighSchool {
                 "SELECT * FROM title",
                 (rs, rowNum) ->
                         new Title(
-                                rs.getInt("id"),
-                                rs.getString("name"),
-                                rs.getString("level"),
-                                rs.getString("area"),
-                                rs.getString("description")
+                                rs.getInt("title_id"),
+                                rs.getString("title_name"),
+                                rs.getString("title_level"),
+                                rs.getString("family"),
+                                rs.getString("title_description")
                         )
         );
     }
@@ -135,15 +135,15 @@ public class MysqlHighSchool implements HighSchool {
         Map<String, Integer> params = new HashMap<>();
         params.put("id", id);
         return jdbcTemplate.queryForObject(
-                "SELECT * FROM title where id=:id",
+                "SELECT * FROM title where title_id=:id",
                 params,
                 (rs, rowNum) ->
                         new Title(
-                                rs.getInt("id"),
-                                rs.getString("name"),
-                                rs.getString("level"),
-                                rs.getString("area"),
-                                rs.getString("description")
+                                rs.getInt("idtitle_id"),
+                                rs.getString("title_name"),
+                                rs.getString("title_level"),
+                                rs.getString("family"),
+                                rs.getString("title_description")
                         )
         );
     }
@@ -153,17 +153,20 @@ public class MysqlHighSchool implements HighSchool {
         Map<String, Integer> params = new HashMap<>();
         params.put("id", id);
         jdbcTemplate.update(
-                "DELETE FROM title where id=:id",
+                "DELETE FROM title where title_id=:id",
                 params
         );
     }
 
     @Override
     public void addTitle(Title title) {
-        Map<String, Title> params = new HashMap<>();
-        params.put("title", title);
+        Map<String, Object> params = new HashMap<>();
+        params.put("name", title.getName());
+        params.put("level", title.getLevel());
+        params.put("area", title.getArea());
+        params.put("description", title.getDescription());
         jdbcTemplate.update(
-                "INSERT INTO title VALUES (:id, :name, :level, :area, :description)",
+                "INSERT INTO title (title_name, title_level, family, title_description) VALUES (:name, :level, :area, :description)",
                 params
         );
     }
