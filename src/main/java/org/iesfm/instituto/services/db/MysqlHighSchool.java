@@ -132,7 +132,7 @@ public class MysqlHighSchool implements HighSchool {
 
     @Override
     public void addTitle(Title title) {
-        
+
     }
 
     @Override
