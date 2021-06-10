@@ -23,7 +23,7 @@ title_description	VARCHAR (100) NOT NULL,
 PRIMARY KEY (title_Id, title_Name)
 );
 
-CREATE TABLE IF NOT EXISTS studentGroup (	
+CREATE TABLE IF NOT EXISTS titleGroup (
 group_id			INT AUTO_INCREMENT PRIMARY KEY,
 class 				VARCHAR (10) NOT NULL,
 grade				INT NOT NULL,
@@ -31,31 +31,47 @@ title				VARCHAR (40) NOT NULL,
 groupYear			INT NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS registration(
-registration_id		INT AUTO_INCREMENT PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS studentInGroup (
+    group_id INT NOT NULL,
+    nif VARCHAR(9) NOT NULL,
+    PRIMARY KEY (group_id, nif),
+    CONSTRAINT FK_Student_StudentInGroup
+    FOREIGN KEY (nif)
+    REFERENCES student (nif)
+    	ON UPDATE CASCADE
+        ON DELETE CASCADE,
+    CONSTRAINT FK_Group_StudentInGroup
+        FOREIGN KEY (group_id)
+        REFERENCES titleGroup (group_id)
+         	ON UPDATE CASCADE
+            ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS enrollment(
+enrollment_id		INT AUTO_INCREMENT PRIMARY KEY,
 student_nif			VARCHAR (9) NOT NULL,
 registration_year	INT NOT NULL,
 title 				VARCHAR (20) NOT NULL,
 grade_id			INT NOT NULL,
 registration_status	VARCHAR (30) NOT NULL,
 
-CONSTRAINT FK_Student_Registration
+CONSTRAINT FK_Student_Enrollment
 FOREIGN KEY (student_nif) 
 REFERENCES student (nif)
 	ON UPDATE CASCADE
     ON DELETE CASCADE,
     
 
-CONSTRAINT FK_Title_Registration
+CONSTRAINT FK_Title_Enrollment
 FOREIGN KEY (title)
 REFERENCES title (title_name)
 	ON UPDATE CASCADE
     ON DELETE CASCADE,
     
 
-CONSTRAINT FK_Group_Registration
+CONSTRAINT FK_Group_Enrollment
 FOREIGN KEY (grade_id)
-REFERENCES studentGroup (group_id)
+REFERENCES titleGroup (group_id)
 	ON UPDATE CASCADE
     ON DELETE CASCADE
 
