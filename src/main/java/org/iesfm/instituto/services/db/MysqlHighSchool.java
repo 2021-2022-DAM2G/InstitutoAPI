@@ -79,7 +79,7 @@ public class MysqlHighSchool implements HighSchool {
                                 rs.getInt("group_id"),
                                 rs.getString("class"),
                                 rs.getString("grade"),
-                                rs.getString("title"),
+                                rs.getInt("title"),
                                 rs.getInt("groupYear")
                         )
         );
