@@ -24,9 +24,9 @@ public class MysqlHighSchool implements HighSchool {
                 (rs, rowNum) ->
                         new Student(
                                 rs.getString("nif"),
-                                rs.getString("name"),
-                                rs.getString("surname"),
-                                rs.getInt("zipCode"),
+                                rs.getString("student_name"),
+                                rs.getString("student_surname"),
+                                rs.getInt("zipcode"),
                                 rs.getString("address"),
                                 rs.getString("email")
                         )
@@ -90,10 +90,10 @@ public class MysqlHighSchool implements HighSchool {
                 (rs, rowNum) ->
                         new Group(
                                 rs.getInt("group_id"),
-                                rs.getString("class"),
-                                rs.getString("grade"),
+                                rs.getString("course"),
+                                rs.getString("letter"),
                                 rs.getInt("title"),
-                                rs.getInt("groupYear")
+                                rs.getInt("group_year")
                         )
         );
     }
@@ -105,10 +105,10 @@ public class MysqlHighSchool implements HighSchool {
                 (rs, rowNum) ->
                         new Group(
                                 rs.getInt("group_id"),
-                                rs.getString("class"),
-                                rs.getString("grade"),
+                                rs.getString("course"),
+                                rs.getString("letter"),
                                 rs.getInt("title"),
-                                rs.getInt("groupYear")
+                                rs.getInt("group_year")
                         )
         );
     }
@@ -135,9 +135,9 @@ public class MysqlHighSchool implements HighSchool {
     @Override
     public void deleteGroup(int id) {
         Map<String, Integer> params = new HashMap<>();
-        params.put("id", id);
+        params.put("group_id", id);
         jdbcTemplate.update(
-                "DELETE FROM titleGroup where group_id=:id",
+                "DELETE FROM titleGroup where group_id=:group_id",
                 params
         );
     }
@@ -146,13 +146,13 @@ public class MysqlHighSchool implements HighSchool {
     public void addGroup(Group group) {
         Map<String, Object> params = new HashMap<>();
 
-        params.put("class", group.getLetter());
-        params.put("grade", group.getCourse());
+        params.put("course", group.getCourse());
+        params.put("letter", group.getLetter());
         params.put("title", group.getTitleId());
-        params.put("groupYear", group.getYear());
+        params.put("year", group.getYear());
 
         jdbcTemplate.update(
-                "INSERT INTO titleGroup (class, grade, title, groupYear) VALUES (:class, :grade, :title, :groupYear)",
+                "INSERT INTO titleGroup (course, letter, title, group_year) VALUES (:course, :letter, :title, :year)",
                 params
         );
     }
