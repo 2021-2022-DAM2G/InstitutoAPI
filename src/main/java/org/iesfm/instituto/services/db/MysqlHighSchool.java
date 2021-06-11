@@ -204,8 +204,8 @@ public class MysqlHighSchool implements HighSchool {
                                 rs.getInt("id"),
                                 rs.getString("studentNif"),
                                 rs.getInt("year"),
-                                rs.getString("title"),
-                                rs.getString("course"),
+                                rs.getInt("title"),
+                                rs.getInt("course"),
                                 rs.getString("status")
                         )
         );
@@ -224,8 +224,8 @@ public class MysqlHighSchool implements HighSchool {
                                 rs.getInt("id"),
                                 rs.getString("studentNif"),
                                 rs.getInt("year"),
-                                rs.getString("title"),
-                                rs.getString("course"),
+                                rs.getInt("title"),
+                                rs.getInt("course"),
                                 rs.getString("status")
                         )
         );
@@ -251,7 +251,7 @@ public class MysqlHighSchool implements HighSchool {
         params.put("course", enrollment.getCourse());
         params.put("status", enrollment.getStatus());
         jdbcTemplate.update(
-                "INSERT INTO enrollment (studentNif, year, title, course, status) VALUES (:studentNif, :year, :title, :course, :status)",
+                "INSERT INTO enrollment (nif, enrollment_year, title_id, group_id, enrollment_status) VALUES (:studentNif, :year, :title, :course, :status)",
                 params
         );
     }

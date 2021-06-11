@@ -11,11 +11,11 @@ public class Enrollment {
     private Integer id;
     private String studentNif;
     private int year;
-    private String title;
-    private String course;
+    private int title;
+    private int course;
     private String status;
 
-    public Enrollment(Integer id, String studentNif, int year, String title, String course, String status) {
+    public Enrollment(Integer id, String studentNif, int year, int title, int course, String status) {
         this.id = id;
         this.studentNif = studentNif;
         this.year = year;
@@ -48,19 +48,19 @@ public class Enrollment {
         this.year = year;
     }
 
-    public String getTitle() {
+    public int getTitle() {
         return title;
     }
 
-    public void setTitle(String title) {
+    public void setTitle(int title) {
         this.title = title;
     }
 
-    public String getCourse() {
+    public int getCourse() {
         return course;
     }
 
-    public void setCourse(String course) {
+    public void setCourse(int course) {
         this.course = course;
     }
 
