@@ -25,7 +25,7 @@ PRIMARY KEY (title_id, title_name)
 
 CREATE TABLE IF NOT EXISTS titleGroup (
 group_id			INT AUTO_INCREMENT PRIMARY KEY,
-class 				VARCHAR (10) NOT NULL,
+course 				VARCHAR (10) NOT NULL,
 grade				INT NOT NULL,
 title				VARCHAR (40) NOT NULL,
 group_year			INT NOT NULL
@@ -59,6 +59,3 @@ REFERENCES titleGroup (group_id)
 	ON UPDATE CASCADE
     ON DELETE CASCADE
 );
-
-
-
