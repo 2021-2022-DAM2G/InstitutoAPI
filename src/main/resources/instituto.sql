@@ -26,7 +26,7 @@ PRIMARY KEY (title_id, title_name)
 CREATE TABLE IF NOT EXISTS titleGroup (
 group_id			INT AUTO_INCREMENT PRIMARY KEY,
 course 				VARCHAR (10) NOT NULL,
-grade				INT NOT NULL,
+letter				varchar(3) NOT NULL,
 title				VARCHAR (40) NOT NULL,
 group_year			INT NOT NULL
 );
@@ -40,7 +40,7 @@ group_id			INT,
 enrollment_status	VARCHAR (30) NOT NULL,
 
 CONSTRAINT FK_Student_Enrollment
-FOREIGN KEY (student_nif) 
+FOREIGN KEY (nif)
 REFERENCES student (nif)
 	ON UPDATE CASCADE
     ON DELETE CASCADE,
@@ -48,7 +48,7 @@ REFERENCES student (nif)
 
 CONSTRAINT FK_Title_Enrollment
 FOREIGN KEY (title_id)
-REFERENCES title (id)
+REFERENCES title (title_id)
 	ON UPDATE CASCADE
     ON DELETE CASCADE,
     

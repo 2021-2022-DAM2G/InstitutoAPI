@@ -57,7 +57,7 @@ function addGroup(){
 		id : idInput.value,
 		course: courseInput.value,
 		letter: letterInput.value,
-		title: titleInput.value,
+		titleId: titleInput.value,
 		year: yearInput.value
 	};
 
@@ -67,24 +67,25 @@ function addGroup(){
 }
 
 function createGroup(json){
-	if (json.id=='' || json.course==''|| json.letter=='' || json.title=='' 
+	if (json.id=='' || json.course==''|| json.letter=='' || json.titleId==''
 		|| json.year==''){
 		window.alert("Hay que rellenar ambas secciones.");
-} else if(isNaN(parseInt(json.id)) || isNaN(parseInt(json.year))){
-	alert("el id o el año deben ser un numero");
-} else{
-	$.ajax({
-		url:"/group",
-		type:"POST",
-		data: JSON.stringify(json),
-		contentType:"application/json; charset=utf-8",
-		success: function(){
-			addGroupFormed(json);
-			alert("Grupo creado");
-		}
-	});
+    } else if(isNaN(parseInt(json.id)) || isNaN(parseInt(json.year))){
+	    alert("el id o el año deben ser un numero");
+    } else{
 
-}
+        $.ajax({
+            url:"/group",
+            type:"POST",
+            data: JSON.stringify(json),
+            contentType:"application/json; charset=utf-8",
+            success: function(){
+                addGroupFormed(json);
+                alert("Grupo creado");
+            }
+        });
+
+    }
 }
 
 function addEnrollment(){
@@ -276,7 +277,7 @@ function addGroupFormed(newGroup) {
 	letter.appendChild(document.createTextNode(newGroup.letter));
 
 	var title = document.createElement("td");
-	title.appendChild(document.createTextNode(newGroup.title));
+	title.appendChild(document.createTextNode(newGroup.titleId));
 
 	var year = document.createElement("td");
 	year.appendChild(document.createTextNode(newGroup.year));

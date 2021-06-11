@@ -99,7 +99,7 @@ function addGroupFormed(newGroup) {
     letter.appendChild(document.createTextNode(newGroup.letter));
 
     var title = document.createElement("td");
-    title.appendChild(document.createTextNode(newGroup.title));
+    title.appendChild(document.createTextNode(newGroup.titleId));
 
     var year = document.createElement("td");
     year.appendChild(document.createTextNode(newGroup.year));
