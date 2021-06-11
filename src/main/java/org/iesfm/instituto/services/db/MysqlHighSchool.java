@@ -90,10 +90,10 @@ public class MysqlHighSchool implements HighSchool {
                 (rs, rowNum) ->
                         new Group(
                                 rs.getInt("group_id"),
-                                rs.getString("class"),
+                                rs.getString("course"),
                                 rs.getString("grade"),
                                 rs.getInt("title"),
-                                rs.getInt("groupYear")
+                                rs.getInt("group_Year")
                         )
         );
     }
@@ -105,10 +105,10 @@ public class MysqlHighSchool implements HighSchool {
                 (rs, rowNum) ->
                         new Group(
                                 rs.getInt("group_id"),
-                                rs.getString("class"),
+                                rs.getString("course"),
                                 rs.getString("grade"),
                                 rs.getInt("title"),
-                                rs.getInt("groupYear")
+                                rs.getInt("group_Year")
                         )
         );
     }
@@ -118,7 +118,7 @@ public class MysqlHighSchool implements HighSchool {
         Map<String, Integer> params = new HashMap<>();
         params.put("id", id);
         jdbcTemplate.update(
-                "DELETE FROM titleGroup where group_id=:id",
+                "DELETE FROM titleGroup where group_id=:group_id",
                 params
         );
     }
@@ -127,13 +127,13 @@ public class MysqlHighSchool implements HighSchool {
     public void addGroup(Group group) {
         Map<String, Object> params = new HashMap<>();
 
-        params.put("class", group.getLetter());
+        params.put("course", group.getLetter());
         params.put("grade", group.getCourse());
         params.put("title", group.getTitleId());
-        params.put("groupYear", group.getYear());
+        params.put("group_Year", group.getYear());
 
         jdbcTemplate.update(
-                "INSERT INTO titleGroup (class, grade, title, groupYear) VALUES (:class, :grade, :title, :groupYear)",
+                "INSERT INTO titleGroup (course, grade, title, groupYear) VALUES (:class, :grade, :title, :group_Year)",
                 params
         );
     }
