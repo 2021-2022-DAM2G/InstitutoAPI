@@ -27,6 +27,12 @@ public class GroupController {
         return highSchool.getGroup(id);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/group/{groupId}/student")
+    public List<Student> getGroupStudents(@PathVariable("groupId") Integer groupId) {
+        return highSchool.getGroupStudents(groupId);
+    }
+
+
     @RequestMapping(method = RequestMethod.DELETE, path = "/group/{id}")
     public void deleteGroup(@PathVariable("id") int id) {
         highSchool.deleteGroup(id);

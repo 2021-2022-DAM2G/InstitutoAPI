@@ -53,6 +53,11 @@ public class InMemoryHighSchool implements HighSchool {
     }
 
     @Override
+    public List<Student> getGroupStudents(Integer groupId) {
+        return null;
+    }
+
+    @Override
     public Group getGroup(int id) {
         return groups.get(id);
     }

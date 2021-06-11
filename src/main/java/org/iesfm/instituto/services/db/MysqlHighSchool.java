@@ -114,6 +114,25 @@ public class MysqlHighSchool implements HighSchool {
     }
 
     @Override
+    public List<Student> getGroupStudents(Integer groupId) {
+        Map<String, Integer> params = new HashMap<>();
+        params.put("groupId", groupId);
+        return jdbcTemplate.query(
+                "SELECT s.* FROM enrollment e INNER JOIN student s ON e.nif = s.nif WHERE group_id = :groupId",
+                params,
+                (rs, rowNum) ->
+                        new Student(
+                                rs.getString("nif"),
+                                rs.getString("name"),
+                                rs.getString("surname"),
+                                rs.getInt("zipCode"),
+                                rs.getString("address"),
+                                rs.getString("email")
+                        )
+        );
+    }
+
+    @Override
     public void deleteGroup(int id) {
         Map<String, Integer> params = new HashMap<>();
         params.put("id", id);

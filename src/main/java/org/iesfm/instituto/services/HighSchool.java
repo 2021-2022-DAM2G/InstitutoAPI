@@ -21,6 +21,8 @@ public interface HighSchool {
 
     List<Group> getGroups();
 
+    List<Student> getGroupStudents(Integer groupId);
+
     void deleteGroup(int id);
 
     void addGroup(Group group);
@@ -40,6 +42,8 @@ public interface HighSchool {
     void deleteEnrollment(Integer id);
 
     void addEnrollment(Enrollment enrollment);
+
+
 }
 
 
