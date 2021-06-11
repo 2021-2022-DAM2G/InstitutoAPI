@@ -24,9 +24,9 @@ public class MysqlHighSchool implements HighSchool {
                 (rs, rowNum) ->
                         new Student(
                                 rs.getString("nif"),
-                                rs.getString("name"),
-                                rs.getString("surname"),
-                                rs.getInt("zipCode"),
+                                rs.getString("student_name"),
+                                rs.getString("student_surname"),
+                                rs.getInt("zipcode"),
                                 rs.getString("address"),
                                 rs.getString("email")
                         )
