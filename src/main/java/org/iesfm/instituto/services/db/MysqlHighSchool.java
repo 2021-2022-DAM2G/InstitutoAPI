@@ -74,7 +74,7 @@ public class MysqlHighSchool implements HighSchool {
         params.put("email", student.getEmail());
 
         jdbcTemplate.update(
-                "INSERT INTO titleGroup (nif, student_name, student_surname, zipcode, address, email)" +
+                "INSERT INTO student (nif, student_name, student_surname, zipcode, address, email)" +
                         "VALUES (:nif, :name, :surname, :zipCode, :address, :email)",
                 params
         );
